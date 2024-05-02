@@ -1,19 +1,13 @@
 package luke.strazzera.strazzeracsc211dogdoor;
 
-public class BarkRecognizer extends SoundRecognizer {
-    public String sound;
+class BarkRecognizer implements SoundRecognizer {
+    private String recognizedSound;
+
     public BarkRecognizer(String sound) {
-        super();
-        this.sound = sound;
+        this.recognizedSound = sound;
     }
 
-    public boolean matchSound(String soundMade){
-        if(sound == soundMade){
-            System.out.println("Bark sound matches. Door opened.");
-            return true;
-        }
-        System.out.println("Sound does not match! Door remains closed.");
-        return false;
+    public boolean recognize(String sound) {
+        return sound.equals(recognizedSound);
     }
-
 }

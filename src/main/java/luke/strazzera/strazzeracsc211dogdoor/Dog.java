@@ -1,9 +1,9 @@
 package luke.strazzera.strazzeracsc211dogdoor;
 
 public class Dog{
-    String name;
-    String bark;
-    String scratch;
+    public String name;
+    public String bark;
+    public String scratch;
 
     public Dog(String name, String bark, String scratch){
         this.name = name;

@@ -21,11 +21,11 @@ public class Main extends Application {
         Dog fido = new Dog("Fido", "Aroo", "ScrScr");
         Dog spot = new Dog("Spot", "Woof", "ErrErr");
 
-        BarkRecognizer fidosBarkRecognizer = new BarkRecognizer(fido.bark);
-        ScratchRecognizer fidosScratchRecognizer = new ScratchRecognizer(fido.scratch);
-        SoundRecognizer fidosSoundRecognizer = new SoundRecognizer(fidosBarkRecognizer, fidosScratchRecognizer);
+        SoundRecognizerContainer soundRecognizerContainer = new SoundRecognizerContainer();
+        soundRecognizerContainer.addRecognizer(new BarkRecognizer(fido.bark));
+        soundRecognizerContainer.addRecognizer(new ScratchRecognizer(fido.scratch));
 
-        DogDoor fidosDoor = new DogDoor(fidosSoundRecognizer);
+        DogDoor fidosDoor = new DogDoor(soundRecognizerContainer);
 
         //Fido barks at the door
         System.out.println("Fido barks at his door:");

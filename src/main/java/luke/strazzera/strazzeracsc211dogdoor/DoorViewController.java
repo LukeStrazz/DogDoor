@@ -1,5 +1,6 @@
 package luke.strazzera.strazzeracsc211dogdoor;
-
+import  luke.strazzera.strazzeracsc211dogdoor.SoundRecognizerContainer;
+import  luke.strazzera.strazzeracsc211dogdoor.BarkRecognizer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -30,14 +31,16 @@ public class DoorViewController {
     Dog fido = new Dog("Fido", "Aroo", "ScrScr");
     Dog spot = new Dog("Spot", "Woof", "ErrErr");
 
-    BarkRecognizer fidosBarkRecognizer = new BarkRecognizer(fido.bark);
-    ScratchRecognizer fidosScratchRecognizer = new ScratchRecognizer(fido.scratch);
-    SoundRecognizer fidosSoundRecognizer = new SoundRecognizer(fidosBarkRecognizer, fidosScratchRecognizer);
-
-    DogDoor fidosDoor = new DogDoor(fidosSoundRecognizer);
+    DogDoor fidosDoor;
+    SoundRecognizerContainer soundRecognizerContainer = new SoundRecognizerContainer();
 
     public void initialize(){
         statusLabel.setText("Welcome \nto the \nDog Door \nApplication");
+        soundRecognizerContainer.addRecognizer(new BarkRecognizer(fido.bark));
+        soundRecognizerContainer.addRecognizer(new ScratchRecognizer(fido.scratch));
+
+        fidosDoor = new DogDoor(soundRecognizerContainer);
+
     }
 
     public void openDoor(){

@@ -1,26 +1,23 @@
 package luke.strazzera.strazzeracsc211dogdoor;
 
-public class DogDoor{
-    int doorNumber;
-    private SoundRecognizer soundRecognizer; // Composition
+import java.util.Iterator;
 
-    public DogDoor(SoundRecognizer soundRecognizer) {
-        this.soundRecognizer = soundRecognizer;
-    }
-    public int getDoorNumber() {
-        return doorNumber;
+public class DogDoor {
+    private SoundRecognizerContainer recognizers;
+
+    public DogDoor(SoundRecognizerContainer recognizers) {
+        this.recognizers = recognizers;
     }
 
-    public void setDoorNumber(int doorNumber) {
-        this.doorNumber = doorNumber;
-    }
-
-    public boolean openDoor(String soundMade) {
-        if (soundRecognizer.matchSound(soundMade)) {
-            System.out.println("Door opens.");
-            return true;
+    public boolean openDoor(String sound) {
+        Iterator<SoundRecognizer> iterator = recognizers.iterator();
+        while (iterator.hasNext()) {
+            if (iterator.next().recognize(sound)) {
+                System.out.println("Door opens for " + sound);
+                return true;
+            }
         }
-        System.out.println("Door stays closed.");
+        System.out.println("Door closed for " + sound);
         return false;
     }
 }
