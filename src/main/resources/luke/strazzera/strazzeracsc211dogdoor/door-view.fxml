@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="752.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="luke.strazzera.strazzeracsc211dogdoor.DoorViewController">
+   <center>
+      <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="261.0" stroke="BLACK" strokeType="INSIDE" width="196.0" />
+                  <Button mnemonicParsing="false" onAction="#openDoor" text="Open Door" translateY="-200.0" translateZ="100.0" />
+                  <Button mnemonicParsing="false" onAction="#closeDoor" text="Close Door" translateY="-200.0" />
+                  <Button mnemonicParsing="false" onAction="#openWindows" text="Open Windows" translateY="-175.0" />
+                  <Button mnemonicParsing="false" onAction="#closeWindows" text="Close Windows" translateY="-174.0" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label fx:id="statusLabel" text="SET LABEL" />
+               </children>
+            </VBox>
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+               <children>
+                  <Label text="Dog Door" />
+                  <Rectangle fx:id="door" arcHeight="5.0" arcWidth="5.0" fill="BROWN" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="200.0" />
+                  <Label text="Windows" />
+                  <Rectangle fx:id="window" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="200.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="4.0" width="200.0" />
+               </children>
+               <HBox.margin>
+                  <Insets bottom="44.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+         <padding>
+            <Insets left="20.0" right="20.0" />
+         </padding>
+      </HBox>
+   </center>
+   <top>
+      <HBox alignment="CENTER" prefHeight="39.0" prefWidth="500.0" BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Remote">
+               <HBox.margin>
+                  <Insets right="120.0" />
+               </HBox.margin>
+            </Label>
+            <Region prefHeight="100.0" prefWidth="127.0" />
+            <Label text="                     " />
+         </children>
+         <BorderPane.margin>
+            <Insets left="50.0" right="50.0" top="55.0" />
+         </BorderPane.margin>
+      </HBox>
+   </top>
+   <bottom>
+      <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+        <tabs>
+          <Tab text="Keypad Controls">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TextField fx:id="codeTextField" layoutX="26.0" layoutY="59.0" promptText="Enter Window Code" />
+                        <Button layoutX="218.0" layoutY="60.0" mnemonicParsing="false" onAction="#windowCodeHandler" text="Open Window" />
+                        <Label layoutX="75.0" layoutY="21.0" text="Enter Code" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Dog Controls">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="61.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleFidoBark" text="Bark" />
+                        <Label layoutX="61.0" layoutY="36.0" text="My dog" />
+                        <Button layoutX="150.0" layoutY="71.0" mnemonicParsing="false" onAction="#handleOtherSound" text="Bark" />
+                        <Label layoutX="142.0" layoutY="36.0" text="Other Dog" />
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Cat Controls">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="74.0" layoutY="44.0" text="Cat" />
+                        <Button layoutX="58.0" layoutY="61.0" mnemonicParsing="false" onAction="#handleOtherSound" text="Meow" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+   </bottom>
+</BorderPane>
