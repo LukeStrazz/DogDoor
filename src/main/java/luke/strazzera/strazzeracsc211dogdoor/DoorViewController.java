@@ -27,7 +27,6 @@ public class DoorViewController {
 
     @FXML
     TextField codeTextField;
-    Remote remote = new Remote(12345);
     Dog fido = new Dog("Fido", "Aroo", "ScrScr");
     Dog spot = new Dog("Spot", "Woof", "ErrErr");
 
@@ -40,35 +39,37 @@ public class DoorViewController {
         soundRecognizerContainer.addRecognizer(new ScratchRecognizer(fido.scratch));
 
         fidosDoor = new DogDoor(soundRecognizerContainer);
-
+        fidosDoor.windowsKeypadCode = 12345;
     }
 
     public void openDoor(){
         door.setFill(Color.WHITE);
+        fidosDoor.openDoor();
         statusLabel.setText("Opened door.");
     }
 
     public void closeDoor(){
         door.setFill(Color.BROWN);
+        fidosDoor.closeDoor();
         statusLabel.setText("Closed door.");
     }
 
     public void openWindows(){
         window.setFill(Color.DODGERBLUE);
-        remote.openWindows();
+        fidosDoor.openWindows();
         statusLabel.setText("Opened Window.");
     }
 
     public void closeWindows(){
         window.setFill(Color.WHITE);
-        remote.closeWindows();
+        fidosDoor.closeWindows();
         statusLabel.setText("Closed Window.");
     }
 
     public void windowCodeHandler(){
         if(!codeTextField.getText().isEmpty()){
             int parsedCode = Integer.parseInt(codeTextField.getText());
-            if(parsedCode == remote.windowsKeypadCode){
+            if(parsedCode == fidosDoor.windowsKeypadCode){
                 openWindows();
                 statusLabel.setText("Code correct\nWindows opened.");
             }
@@ -90,7 +91,7 @@ public class DoorViewController {
     }
 
     public void handleOtherSound(){
-        if(fidosDoor.openDoor(spot.bark)){
+        if(fidosDoor.openDoor("not a sound from fido")){
             door.setFill(Color.WHITE);
             statusLabel.setText("Door opened.");
         }else{

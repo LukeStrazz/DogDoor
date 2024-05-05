@@ -5,6 +5,7 @@ public class Dog{
     public String bark;
     public String scratch;
 
+    // Hold all values a Dog needs for the Dor to recognize the dog
     public Dog(String name, String bark, String scratch){
         this.name = name;
         this.bark = bark;

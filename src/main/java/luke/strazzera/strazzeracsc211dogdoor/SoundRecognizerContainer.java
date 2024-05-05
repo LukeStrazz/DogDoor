@@ -7,10 +7,12 @@ import java.util.List;
 public class SoundRecognizerContainer implements Iterable<SoundRecognizer> {
     public List<SoundRecognizer> recognizers = new ArrayList<>();
 
+    // Recgonizer module to hold sounds from pre-recorded noises for a pet
     public void addRecognizer(SoundRecognizer recognizer) {
         recognizers.add(recognizer);
     }
 
+    // Iterator for the SoundRecognizer
     @Override
     public Iterator<SoundRecognizer> iterator() {
         return recognizers.iterator();
